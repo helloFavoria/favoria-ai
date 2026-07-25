@@ -1,31 +1,43 @@
-"use client";
-
-import { supabase } from "@/lib/supabase/client";
-
 export default function DashboardPage() {
-  async function logout() {
-    await supabase.auth.signOut();
-    location.href = "/login";
-  }
-
   return (
-    <main className="flex min-h-screen items-center justify-center">
-      <div className="rounded-2xl border p-10 text-center">
-        <h1 className="text-3xl font-bold">
-          🎉 Dashboard Favoria AI
-        </h1>
+    <div>
 
-        <p className="mt-4">
-          Login berhasil.
-        </p>
+      <h1 className="text-3xl font-bold">
+        Dashboard
+      </h1>
 
-        <button
-          onClick={logout}
-          className="mt-8 rounded-lg bg-black px-6 py-3 text-white"
-        >
-          Logout
-        </button>
+      <div className="grid grid-cols-4 gap-6 mt-8">
+
+        <div className="rounded-xl border p-6">
+          <h2>Total Products</h2>
+          <p className="text-4xl font-bold mt-3">
+            0
+          </p>
+        </div>
+
+        <div className="rounded-xl border p-6">
+          <h2>Total Clicks</h2>
+          <p className="text-4xl font-bold mt-3">
+            0
+          </p>
+        </div>
+
+        <div className="rounded-xl border p-6">
+          <h2>Collections</h2>
+          <p className="text-4xl font-bold mt-3">
+            0
+          </p>
+        </div>
+
+        <div className="rounded-xl border p-6">
+          <h2>Marketplace</h2>
+          <p className="text-4xl font-bold mt-3">
+            0
+          </p>
+        </div>
+
       </div>
-    </main>
+
+    </div>
   );
 }
