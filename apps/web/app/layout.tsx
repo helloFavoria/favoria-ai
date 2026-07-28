@@ -1,22 +1,19 @@
-import Sidebar from "@/components/layout/Sidebar";
-import Navbar from "@/components/layout/Navbar";
+import "./globals.css";
+import type { Metadata } from "next";
 
-export default function DashboardLayout({
+export const metadata: Metadata = {
+  title: "Favoria AI",
+  description: "Affiliate AI Platform",
+};
+
+export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex min-h-screen">
-      <Sidebar />
-
-      <div className="flex-1">
-        <Navbar />
-
-        <main className="p-6">
-          {children}
-        </main>
-      </div>
-    </div>
+    <html lang="en">
+      <body>{children}</body>
+    </html>
   );
 }
