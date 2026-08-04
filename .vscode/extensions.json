@@ -1,0 +1,12 @@
+﻿{
+  "recommendations": [
+    "esbenp.prettier-vscode",
+    "ritwickdey.liveserver",
+    "christian-kohler.path-intellisense",
+    "dbaeumer.vscode-eslint",
+    "bradlc.vscode-tailwindcss",
+    "usernamehw.errorlens",
+    "eamodio.gitlens",
+    "yzhang.markdown-all-in-one"
+  ]
+}
