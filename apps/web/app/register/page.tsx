@@ -2,10 +2,11 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { supabase } from "@/lib/supabase/client";
+import { createClient } from "@/lib/supabase/client";
 
 export default function RegisterPage() {
   const router = useRouter();
+  const supabase = createClient();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -51,9 +52,7 @@ export default function RegisterPage() {
       >
         <h1 className="text-3xl font-bold">Register</h1>
 
-        <p className="mt-2 text-slate-600">
-          Create your Favoria AI account.
-        </p>
+        <p className="mt-2 text-slate-600">Create your Favoria AI account.</p>
 
         <input
           type="email"

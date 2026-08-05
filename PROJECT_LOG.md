@@ -36,10 +36,41 @@ Completed
 
 Pending
 
-- Documentation Review
 - Architecture Validation
 - Traceability Check
 
 Next
 
 M2 Documentation Review
+
+## Milestone M2
+
+Documentation Review Complete
+
+Completed
+
+- REPOSITORY_AUDIT.md
+- Project Setup
+
+Notes
+
+- `pnpm install` succeeded
+- `pnpm --filter web lint` succeeded
+- `pnpm --filter web build` succeeded
+
+## Milestone M2.5
+
+Repository Freeze Complete
+
+Completed
+
+- docs/FREEZE_v1.0.md
+- reports/daily/2026-08-05.md
+- reports/weekly/README.md
+- reports/release/README.md
+
+Notes
+
+- Documentation baseline set to `v1.0`
+- Freeze established: no feature changes before implementation
+- Future spec changes must go through Decision Log
