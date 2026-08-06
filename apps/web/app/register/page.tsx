@@ -1,93 +1,68 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { createClient } from "@/lib/supabase/client";
+import { useActionState } from "react";
+import Link from "next/link";
+import { register } from "./actions";
+
+const initialState = { error: "", success: "" };
 
 export default function RegisterPage() {
-  const router = useRouter();
-  const supabase = createClient();
-
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [loading, setLoading] = useState(false);
-
-  async function handleRegister(e: React.FormEvent) {
-    e.preventDefault();
-
-    if (password.length < 8) {
-      alert("Password minimal 8 karakter.");
-      return;
-    }
-
-    if (password !== confirmPassword) {
-      alert("Password tidak sama.");
-      return;
-    }
-
-    setLoading(true);
-
-    const { error } = await supabase.auth.signUp({
-      email,
-      password,
-    });
-
-    setLoading(false);
-
-    if (error) {
-      alert(error.message);
-      return;
-    }
-
-    alert("Registrasi berhasil! Silakan login.");
-    router.push("/login");
-  }
+  const [state, formAction, pending] = useActionState(register, initialState);
 
   return (
-    <main className="flex min-h-screen items-center justify-center">
+    <main className="flex min-h-screen items-center justify-center bg-slate-50 px-4">
       <form
-        onSubmit={handleRegister}
+        action={formAction}
         className="w-full max-w-md rounded-3xl border border-slate-200 bg-white p-8 shadow-lg"
       >
-        <h1 className="text-3xl font-bold">Register</h1>
+        <h1 className="text-3xl font-bold text-slate-900">Register</h1>
 
         <p className="mt-2 text-slate-600">Create your Favoria AI account.</p>
 
+        {state?.error ? (
+          <div className="mt-4 rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700">
+            {state.error}
+          </div>
+        ) : null}
+
         <input
           type="email"
+          name="email"
           placeholder="Email"
-          className="mt-6 w-full rounded-lg border p-3"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          className="mt-6 w-full rounded-lg border border-slate-300 p-3 outline-none focus:border-slate-900"
           required
         />
 
         <input
           type="password"
+          name="password"
           placeholder="Password"
-          className="mt-4 w-full rounded-lg border p-3"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          className="mt-4 w-full rounded-lg border border-slate-300 p-3 outline-none focus:border-slate-900"
           required
         />
 
         <input
           type="password"
+          name="confirmPassword"
           placeholder="Confirm Password"
-          className="mt-4 w-full rounded-lg border p-3"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
+          className="mt-4 w-full rounded-lg border border-slate-300 p-3 outline-none focus:border-slate-900"
           required
         />
 
         <button
           type="submit"
-          disabled={loading}
-          className="mt-6 w-full rounded-lg bg-black p-3 text-white"
+          disabled={pending}
+          className="mt-6 w-full rounded-lg bg-slate-900 p-3 font-medium text-white transition hover:bg-slate-700 disabled:cursor-not-allowed disabled:opacity-60"
         >
-          {loading ? "Creating..." : "Register"}
+          {pending ? "Creating..." : "Register"}
         </button>
+
+        <p className="mt-4 text-center text-sm text-slate-600">
+          Already have an account?{" "}
+          <Link href="/login" className="font-medium text-slate-900">
+            Sign in
+          </Link>
+        </p>
       </form>
     </main>
   );

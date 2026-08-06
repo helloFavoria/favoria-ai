@@ -19,7 +19,7 @@ Jangan mulai implementasi sebelum seluruh dokumentasi dipahami.
 
 Baca:
 
-tasks/001-authentication.md
+tasks/002-authentication.md
 
 Kerjakan HANYA task tersebut.
 

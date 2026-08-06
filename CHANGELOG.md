@@ -10,3 +10,17 @@
 
 - Authentication
 - Dashboard
+
+## v0.3.0
+
+### Added
+
+- UI documentation and blueprints
+- API contracts
+- User flow documentation
+- Executive dashboard
+- Authentication implementation task
+
+### Updated
+
+- Implemented full authentication milestone with middleware, auth provider, server actions, forgot password flow, typed errors, and Playwright E2E coverage
